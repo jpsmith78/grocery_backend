@@ -1,5 +1,6 @@
 <?php
-  $dbconn = pg_connect("host=HOST dbname=shopping_list");
+  $host = getenv('HOST')
+  $dbconn = pg_connect("host=$host dbname=shopping_list");
 
   class ListItem {
     public $id;
