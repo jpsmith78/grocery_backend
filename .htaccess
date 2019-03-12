@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteRule ^list$ controllers/list.php?action=index
