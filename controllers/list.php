@@ -6,7 +6,6 @@
     echo json_encode(ListItems::all());
   }
 
-  echo "hello world";
 
 
  ?>
