@@ -14,3 +14,6 @@ RewriteRule ^list/([0-9]+)$ controllers/list.php?action=delete&id=$1
 
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^refrigerator$ controllers/refrigerator.php?action=index
+
+RewriteCond %{REQUEST_METHOD} ^POST$
+RewriteRule ^refrigerator$ controllers/refrigerator.php?action=post

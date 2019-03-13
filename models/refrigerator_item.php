@@ -42,9 +42,14 @@
       return $fridge_items;
     }
 
-    // static function create($fridge_item){
-    //   $query = "INSERT INTO refrigerator ()"
-    // }
+    static function create($fridge_item){
+      $query = "INSERT INTO refrigerator (item, category, quantity, unit) VALUES ($1, $2, $3, $4)";
+
+      $query_params = array($fridge_item->item, $fridge_item->category, $fridge_item->quantity, $fridge_item->unit);
+
+      pg_query_params($query, $query_params);
+      return self::all();
+    }
   }
 
  ?>
