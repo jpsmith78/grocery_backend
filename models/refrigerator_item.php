@@ -41,6 +41,10 @@
       }
       return $fridge_items;
     }
+
+    // static function create($fridge_item){
+    //   $query = "INSERT INTO refrigerator ()"
+    // }
   }
 
  ?>
