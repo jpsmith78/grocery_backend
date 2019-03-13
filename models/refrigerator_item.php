@@ -4,7 +4,12 @@
   $dotenv->load();
   $host = getenv('HOST');
 
+
+  if(getenv(DATABASE_URL)) {
+   $dbconn = pg_connect(getenv("DATABASE_URL"));
+  } else {
   $dbconn = pg_connect("host=$host dbname=shopping_list");
+  }
 
   class FridgeItem {
     public $id;
