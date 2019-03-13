@@ -1,5 +1,11 @@
 <?php
-  require '../vendor/autoload.php';
+  $autoload = getenv('AUTOLOAD')
+  if(getenv(AUTOLOAD)){
+    require '$autoload'
+  } else {
+    require '../vendor/autoload.php';
+  }
+
   $dotenv = Dotenv\Dotenv::create(__DIR__ . '/..');
   $dotenv->load();
   $host = getenv('HOST');
