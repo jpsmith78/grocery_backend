@@ -4,9 +4,6 @@
   $dotenv->load();
   $host = getenv('HOST');
 
-// $dbconn = pg_connect("host=$host dbname=dl5fbvdq9tl02");
-
-  // $dbconn = pg_connect("dbname=dl5fbvdq9tl02 host=ec2-50-19-109-120.compute-1.amazonaws.com port=5432 user=dkhhvwyafmoelq password=537dee3d8fc128e53a14daff804e51bbfb3e0612a179d012286a1c4a35a1950a sslmode=require");
 
   if(getenv(DATABASE_URL)) {
    $dbconn = pg_connect(getenv("DATABASE_URL"));
