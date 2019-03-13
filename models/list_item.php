@@ -1,7 +1,7 @@
 <?php
   $autoload = getenv('AUTOLOAD');
   if(getenv(AUTOLOAD)){
-    require '$autoload';
+    require $autoload;
   } else {
     require '../vendor/autoload.php';
   }
