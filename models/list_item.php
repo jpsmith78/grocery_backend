@@ -1,18 +1,13 @@
 <?php
-  // require 'vendor/autoload.php';
-  // require 'vendor/vlucas/phpdotenv/src/Dotenv.php';
-  // require 'vendor/vlucas/phpdotenv/src/Loader.php';
-  // require 'vendor/vlucas/phpdotenv/src/Validator.php';
-  // $dotenv = Dotenv\Dotenv::create(__DIR__);
-  // $dotenv->load();
-  // $host = getenv('HOST');
+  require '../vendor/autoload.php';
+  $dotenv = Dotenv\Dotenv::create(__DIR__ . '/..');
+  $dotenv->load();
+  $host = getenv('HOST');
 
-  // function pg_connection_string(){
-  //   return "dbname=dl5fbvdq9tl02 host=ec2-50-19-109-120.compute-1.amazonaws.com port=5432 user=dkhhvwyafmoelq password=537dee3d8fc128e53a14daff804e51bbfb3e0612a179d012286a1c4a35a1950a sslmode=require"
-  // };
-  // $dbconn = pg_connect(pg_connection_string());
+  $dbconn = pg_connect("host=$host dbname=shopping_list");
+  // $dbconn = pg_connect("dbname=dl5fbvdq9tl02 host=ec2-50-19-109-120.compute-1.amazonaws.com port=5432 user=dkhhvwyafmoelq password=537dee3d8fc128e53a14daff804e51bbfb3e0612a179d012286a1c4a35a1950a sslmode=require");
 
-  $dbconn = pg_connect("host=localhost dbname=shopping_list");
+  // $dbconn = pg_connect("host=localhost dbname=shopping_list");
 
 
   class ListItem {
