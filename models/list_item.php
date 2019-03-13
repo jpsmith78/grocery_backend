@@ -1,13 +1,14 @@
 <?php
-require '../vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::create(__DIR__ . '/..');
-$dotenv->load();
-$host = getenv('HOST');
+  require '../vendor/autoload.php';
+  $dotenv = Dotenv\Dotenv::create(__DIR__ . '/..');
+  $dotenv->load();
+  $host = getenv('HOST');
 
-$dbconn = pg_connect("host=$host dbname=dl5fbvdq9tl02");
+// $dbconn = pg_connect("host=$host dbname=dl5fbvdq9tl02");
+
   // $dbconn = pg_connect("dbname=dl5fbvdq9tl02 host=ec2-50-19-109-120.compute-1.amazonaws.com port=5432 user=dkhhvwyafmoelq password=537dee3d8fc128e53a14daff804e51bbfb3e0612a179d012286a1c4a35a1950a sslmode=require");
 
-  // $dbconn = pg_connect("host=localhost dbname=shopping_list");
+  $dbconn = pg_connect("host=$host dbname=shopping_list");
 
 
   class ListItem {
