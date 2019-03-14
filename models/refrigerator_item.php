@@ -55,6 +55,25 @@
       pg_query_params($query, $query_params);
       return self::all();
     }
+
+    static function update($updated_fridge_item){
+      $query = "UPDATE refrigerator SET item = $1, category = $2, quantity = $3, unit = $4 WHERE id = $5";
+
+      $query_params = array($updated_fridge_item->item, $updated_fridge_item->category, $updated_fridge_item->quantity, $updated_fridge_item->unit, $updated_fridge_item->id);
+
+      $result = pg_query_params($query, $query_params);
+
+      return self::all();
+    }
+
+    static function delete($id){
+      $query = "DELETE FROM refrigerator WHERE id = $1";
+      $query_params = array($id);
+      $result = pg_query_params($query, $query_params);
+
+      return self::all();
+    }
+
   }
 
  ?>
