@@ -68,7 +68,7 @@
               intval($row_object->fridge_id),
               $row_object->fridge_item,
               $row_object->fridge_category,
-              $row_object->fridge_quantity,
+              intval($row_object->fridge_quantity),
               $row_object->fridge_unit
             );
             $list_length = count($listItems);
