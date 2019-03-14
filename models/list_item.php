@@ -1,4 +1,5 @@
 <?php
+  include_once __DIR__ . '/refrigerator_item.php';
   // require '../vendor/autoload.php';
   // $dotenv = Dotenv\Dotenv::create(__DIR__ . '/..');
   // $dotenv->load();
@@ -28,6 +29,7 @@
       $this->quantity = $quantity;
       $this->unit = $unit;
       $this->in_refrigerator = $in_refrigerator;
+      $this->have_at_home = [];
     }
   }
 
@@ -35,20 +37,50 @@
     static function all(){
       $listItems = array();
 
-      $results = pg_query("SELECT * FROM list");
+      $results = pg_query("SELECT
+          list.*,
+          refrigerator.id AS fridge_id,
+          refrigerator.fridge_item, refrigerator.fridge_category, refrigerator.fridge_quantity, refrigerator.fridge_unit
+        FROM list
+        LEFT JOIN refrigerator
+          ON list.item = refrigerator.fridge_item
+        AND list.category = refrigerator.fridge_category;");
 
       $row_object = pg_fetch_object($results);
+      $last_item_id = null;
+
       while($row_object){
-        $new_listItem = new ListItem(
-            intval($row_object->id),
-            $row_object->item,
-            $row_object->category,
-            $row_object->price,
-            intval($row_object->quantity),
-            $row_object->unit,
-            $row_object->in_refrigerator
-          );
-          $listItems[] = $new_listItem;
+        if($row_object->id !== $last_item_id){
+          $new_listItem = new ListItem(
+              intval($row_object->id),
+              $row_object->item,
+              $row_object->category,
+              $row_object->price,
+              intval($row_object->quantity),
+              $row_object->unit,
+              $row_object->in_refrigerator
+            );
+            $listItems[] = $new_listItem;
+            $last_item_id = $row_object->id;
+        }
+        if($row_object->fridge_id){
+          $new_fridge_item = new FridgeItem(
+              intval($row_object->fridge_id),
+              $row_object->fridge_item,
+              $row_object->fridge_category,
+              $row_object->fridge_quantity,
+              $row_object->fridge_unit
+            );
+            $list_length = count($listItems);
+            $last_index_of_list = $list_length-1;
+
+            $most_recently_added_list = $listItems[$last_index_of_list];
+
+            $most_recently_added_list->have_at_home[] = $new_fridge_item;
+        }
+
+
+
           $row_object = pg_fetch_object($results);
       }
       return $listItems;

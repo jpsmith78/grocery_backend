@@ -10,7 +10,7 @@
       $request_body = file_get_contents('php://input');
       $body_object = json_decode($request_body);
 
-      $new_fridge_item = new FridgeItem(null, $body_object->item, $body_object->category, $body_object->quantity, $body_object->unit);
+      $new_fridge_item = new FridgeItem(null, $body_object->fridge_item, $body_object->fridge_category, $body_object->fridge_quantity, $body_object->fridge_unit);
 
       $all_fridge_items = FridgeItems::create($new_fridge_item);
 
@@ -20,7 +20,7 @@
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
 
-    $updated_fridge_item = new FridgeItem($_REQUEST['id'], $body_object->item, $body_object->category, $body_object->quantity, $body_object->unit);
+    $updated_fridge_item = new FridgeItem($_REQUEST['id'], $body_object->fridge_item, $body_object->fridge_category, $body_object->fridge_quantity, $body_object->fridge_unit);
 
     $all_fridge_items = FridgeItems::update($updated_fridge_item);
     echo json_encode($all_fridge_items);
