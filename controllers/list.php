@@ -1,6 +1,6 @@
 <?php
-
   include_once __DIR__ . '/../models/list_item.php';
+  header("Access-Control-Allow-Origin: *");
   header('Content-Type: application/json');
 
   if($_REQUEST['action'] === 'index'){

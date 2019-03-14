@@ -1,5 +1,6 @@
 <?php
   include_once __DIR__ . '/../models/refrigerator_item.php';
+  header("Access-Control-Allow-Origin: *");
   header('Content-Type: application/json');
 
 
