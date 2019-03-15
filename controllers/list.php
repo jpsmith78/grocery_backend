@@ -1,7 +1,8 @@
 <?php
   include_once __DIR__ . '/../models/list_item.php';
-  header("Access-Control-Allow-Origin: *");
-  header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+  // header("Access-Control-Allow-Origin: *");
+  // header("Access-Control-Allow-Headers: Accept, Content-Type");
+  // header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT");
   header('Content-Type: application/json');
 
   if($_REQUEST['action'] === 'index'){
