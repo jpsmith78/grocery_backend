@@ -1,4 +1,5 @@
 <?php
+
   include_once __DIR__ . '/refrigerator_item.php';
   // require '../vendor/autoload.php';
   // $dotenv = Dotenv\Dotenv::create(__DIR__ . '/..');
@@ -44,7 +45,8 @@
         FROM list
         LEFT JOIN refrigerator
           ON list.item = refrigerator.fridge_item
-        AND list.category = refrigerator.fridge_category;");
+        AND list.category = refrigerator.fridge_category
+        ORDER BY list.id ASC;");
 
       $row_object = pg_fetch_object($results);
       $last_item_id = null;
