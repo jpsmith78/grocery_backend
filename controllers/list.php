@@ -11,14 +11,14 @@
   } else if ($_REQUEST['action'] === 'post'){
       $request_body = file_get_contents('php://input');
       $body_object = json_decode($request_body);
-      $new_listItem = new ListItem(null, $body_object->item, $body_object->category, $body_object->price, $body_object->quantity, $body_object->unit, $body_object->in_refrigerator);
+      $new_listItem = new ListItem(null, $body_object->item, $body_object->category, $body_object->price, $body_object->quantity, $body_object->unit, $body_object->recipe);
       $all_list_items = ListItems::create($new_listItem);
       echo json_encode($all_list_items);
 
   } else if ($_REQUEST['action'] === 'update'){
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
-    $updated_item = new ListItem($_REQUEST['id'], $body_object->item, $body_object->category, $body_object->price, $body_object->quantity, $body_object->unit, $body_object->in_refrigerator);
+    $updated_item = new ListItem($_REQUEST['id'], $body_object->item, $body_object->category, $body_object->price, $body_object->quantity, $body_object->unit, $body_object->recipe);
 
     $all_list_items = ListItems::update($updated_item);
 

@@ -21,15 +21,15 @@
     public $price;
     public $quantity;
     public $unit;
-    public $in_refrigerator;
-    public function __construct($id, $item, $category, $price, $quantity, $unit, $in_refrigerator){
+    public $recipe;
+    public function __construct($id, $item, $category, $price, $quantity, $unit, $recipe){
       $this->id = $id;
       $this->item = $item;
       $this->category = $category;
       $this->price = $price;
       $this->quantity = $quantity;
       $this->unit = $unit;
-      $this->in_refrigerator = $in_refrigerator;
+      $this->recipe = $recipe;
       $this->have_at_home = [];
     }
   }
@@ -60,6 +60,7 @@
               $row_object->price,
               intval($row_object->quantity),
               $row_object->unit,
+              $row_object->recipe,
               $row_object->in_refrigerator
             );
             $listItems[] = $new_listItem;
@@ -89,16 +90,16 @@
     }
 
     static function create($newItem){
-      $query = "INSERT INTO list (item, category, price, quantity, unit) VALUES ($1, $2, $3, $4, $5)";
-      $query_params = array($newItem->item, $newItem->category, $newItem->price, $newItem->quantity, $newItem->unit);
+      $query = "INSERT INTO list (item, category, price, quantity, unit, recipe) VALUES ($1, $2, $3, $4, $5, $6)";
+      $query_params = array($newItem->item, $newItem->category, $newItem->price, $newItem->quantity, $newItem->unit, $newItem->recipe );
       pg_query_params($query, $query_params);
       return self::all();
     }
 
     static function update($updated_item){
-      $query = "UPDATE list SET item = $1, category = $2, price = $3, quantity = $4, unit = $5, in_refrigerator = $6 WHERE id = $7";
+      $query = "UPDATE list SET item = $1, category = $2, price = $3, quantity = $4, unit = $5, recipe = $6 WHERE id = $7";
 
-      $query_params = array($updated_item->item, $updated_item->category, $updated_item->price, $updated_item->quantity, $updated_item->unit, $updated_item->in_refrigerator, $updated_item->id);
+      $query_params = array($updated_item->item, $updated_item->category, $updated_item->price, $updated_item->quantity, $updated_item->unit, $updated_item->recipe, $updated_item->id);
 
       $result = pg_query_params($query, $query_params);
 
