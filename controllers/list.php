@@ -18,6 +18,7 @@
   } else if ($_REQUEST['action'] === 'update'){
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
+    
     $updated_item = new ListItem($_REQUEST['id'], $body_object->item, $body_object->category, $body_object->price, $body_object->quantity, $body_object->unit, $body_object->recipe);
 
     $all_list_items = ListItems::update($updated_item);
