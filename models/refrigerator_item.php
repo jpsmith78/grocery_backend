@@ -58,7 +58,7 @@
     }
 
     static function update($updated_fridge_item){
-      $query = "UPDATE refrigerator SET item = $1, category = $2, quantity = $3, unit = $4 WHERE id = $5";
+      $query = "UPDATE refrigerator SET fridge_item = $1, fridge_category = $2, fridge_quantity = $3, fridge_unit = $4 WHERE id = $5";
 
       $query_params = array($updated_fridge_item->fridge_item, $updated_fridge_item->fridge_category, $updated_fridge_item->fridge_quantity, $updated_fridge_item->fridge_unit, $updated_fridge_item->id);
 
