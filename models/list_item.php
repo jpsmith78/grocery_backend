@@ -46,10 +46,11 @@
         LEFT JOIN refrigerator
           ON list.item = refrigerator.fridge_item
         AND list.category = refrigerator.fridge_category
-        ORDER BY list.id ASC;");
+        ORDER BY list.category ASC,
+                 list.recipe ASC,
+                 list.item ASC;");
 
       $row_object = pg_fetch_object($results);
-      $last_item_id = null;
 
       while($row_object){
         if($row_object->id !== $last_item_id){
@@ -64,7 +65,6 @@
               $row_object->in_refrigerator
             );
             $listItems[] = $new_listItem;
-            $last_item_id = $row_object->id;
         }
         if($row_object->fridge_id){
           $new_fridge_item = new FridgeItem(
