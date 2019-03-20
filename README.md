@@ -1,11 +1,11 @@
 # Shopping List Back End
 
-## [link to list site](https://shopping-back.herokuapp.com/list)
+#### [link to list site](https://shopping-back.herokuapp.com/list)
 
 
 #### [link to refrigerator site](https://shopping-back.herokuapp.com/refrigerator)
 
-#### Technologies Used
+## Technologies Used
 PHP, PostgresSQL, Mamp, Composer,
 vlucas/phpdotenv, CORS
 ## Approach Taken
