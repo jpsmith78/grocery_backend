@@ -31,7 +31,7 @@
     static function all(){
       $fridge_items = array();
 
-      $results = pg_query("SELECT * FROM refrigerator ORDER BY refrigerator.id ASC");
+      $results = pg_query("SELECT * FROM refrigerator ORDER BY refrigerator.fridge_category ASC, refrigerator.fridge_item ASC");
       $row_object = pg_fetch_object($results);
       while($row_object){
         $new_fridge_item = new FridgeItem(
